@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevSquad | Hire High-Performance Dev Teams</title>
+    <title>CreatorHero | Supercharge Your Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -16,15 +16,17 @@
               brand: {
                 dark: '#000000',
                 card: '#0b0b0b',
-                red: '#DC2626',
-                orange: '#EA580C',
+                primary: '#cc2366', // Instagram pink
+                secondary: '#f09433', // Instagram orange
+                accent: '#bc1888', // Instagram purple
               }
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
             },
             backgroundImage: {
               'glow-radial': 'radial-gradient(circle at center, var(--tw-gradient-stops))',
+              'insta-gradient': 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
             },
             animation: {
               scroll: 'scroll 30s linear infinite',
@@ -56,7 +58,7 @@
         border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #DC2626; 
+        background: #0ea5e9; 
       }
     </style>
   <script type="importmap">
@@ -70,8 +72,10 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
-  </body>
+  <script type="module" src="/index.tsx"></script>
+</body>
 </html>

@@ -71,7 +71,7 @@ export const OrdersModal: React.FC<OrdersModalProps> = ({ isOpen, onClose, order
       >
         <div className="flex items-center justify-between p-6 border-b border-white/5 bg-[#0b0b0b]">
            <div className="flex items-center gap-3">
-             <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+             <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></div>
              <h2 className="text-xl font-bold text-white">Order Status: <span className="text-gray-400">#{Math.floor(Math.random() * 10000)}</span></h2>
            </div>
            <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-gray-400 hover:text-white transition-colors">
@@ -91,7 +91,7 @@ export const OrdersModal: React.FC<OrdersModalProps> = ({ isOpen, onClose, order
                     >
                         <div className="relative w-32 h-32 mb-8">
                              <div className="absolute inset-0 rounded-full border-4 border-white/5"></div>
-                             <div className="absolute inset-0 rounded-full border-4 border-red-600 border-t-transparent animate-spin"></div>
+                             <div className="absolute inset-0 rounded-full border-4 border-sky-600 border-t-transparent animate-spin"></div>
                              <div className="absolute inset-0 flex items-center justify-center">
                                  <span className="text-2xl font-bold text-white">{progress}%</span>
                              </div>
@@ -158,7 +158,7 @@ export const OrdersModal: React.FC<OrdersModalProps> = ({ isOpen, onClose, order
                                 key={idx}
                                 className={`relative rounded-xl p-6 border flex flex-col ${
                                     plan.highlight 
-                                    ? 'bg-[#0b0b0b] border-red-600 shadow-[0_0_30px_rgba(220,38,38,0.1)]' 
+                                    ? 'bg-[#0b0b0b] border-sky-600 shadow-[0_0_30px_rgba(14,165,233,0.1)]' 
                                     : 'bg-[#050505] border-white/5 opacity-75 hover:opacity-100 transition-opacity'
                                 }`}
                                 >
@@ -171,7 +171,7 @@ export const OrdersModal: React.FC<OrdersModalProps> = ({ isOpen, onClose, order
                                 <div className="space-y-3 mb-6 flex-1">
                                     {plan.features.slice(0, 4).map((feature, i) => (
                                     <div key={i} className="flex items-center gap-2">
-                                        <div className={`p-0.5 rounded-full ${plan.highlight ? 'bg-red-600/20 text-red-500' : 'bg-white/10 text-gray-400'}`}>
+                                        <div className={`p-0.5 rounded-full ${plan.highlight ? 'bg-sky-600/20 text-sky-500' : 'bg-white/10 text-gray-400'}`}>
                                         <Check className="w-3 h-3" />
                                         </div>
                                         <span className="text-gray-300 text-xs">{feature}</span>

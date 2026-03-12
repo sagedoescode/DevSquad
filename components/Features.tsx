@@ -6,33 +6,33 @@ import { Section } from './ui/Section';
 const features = [
   {
     icon: Users,
-    title: "Pre-vetted Teams",
-    description: "Skip the interviews. We hire the top 1% of talent so you don't have to."
-  },
-  {
-    icon: Clock,
-    title: "Onboard in 24 Hours",
-    description: "Stop waiting weeks to start. Our squads are ready to deploy instantly."
-  },
-  {
-    icon: Shield,
-    title: "Zero Risk Guarantee",
-    description: "If you're not satisfied in the first 2 weeks, you don't pay a dime."
-  },
-  {
-    icon: Terminal,
-    title: "Modern Tech Stack",
-    description: "Experts in React, Node, Python, and AI integration. We speak your language."
-  },
-  {
-    icon: RefreshCw,
-    title: "Seamless Sync",
-    description: "Daily standups, weekly sprints, and transparent reporting via Slack & Jira."
+    title: "Elite Creator Squads",
+    description: "Access the top 1% of editors, designers, and managers vetted for high-velocity growth."
   },
   {
     icon: Zap,
+    title: "Client Acquisition Engine",
+    description: "While you handle building, we handle getting you clients. A steady stream of high-ticket leads, automated."
+  },
+  {
+    icon: Terminal,
+    title: "AI Automated Proposals",
+    description: "Win more deals with AI-generated, high-converting proposals that land in your prospects' inbox in seconds."
+  },
+  {
+    icon: Shield,
+    title: "Branding & Positioning",
+    description: "We handle your branding and authority building, turning you from a freelancer into a category leader."
+  },
+  {
+    icon: Clock,
+    title: "Deploy in 24 Hours",
+    description: "Stop waiting weeks to start. Our squads are ready to integrate into your workflow and start scaling instantly."
+  },
+  {
+    icon: RefreshCw,
     title: "Scale on Demand",
-    description: "Need more hands? Scale your squad up or down with a single click."
+    description: "Need more hands? Scale your squad up or down with a single click as your creator empire grows."
   }
 ];
 
@@ -42,10 +42,10 @@ export const Features: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            The <span className="text-red-600">Anti-Freelancer</span> Platform
+            Creator Success, <span className="text-transparent bg-clip-text bg-insta-gradient">Redefined</span>
           </h2>
           <p className="text-gray-400 text-lg">
-            Freelancers ghost you. Agencies overcharge you. DevSquad gives you the reliability of an in-house team with the flexibility of a service.
+            Traditional agencies are slow. Freelancers are unreliable. CreatorHero gives you the power of a world-class team with the flexibility of a platform.
           </p>
         </div>
 
@@ -57,18 +57,21 @@ export const Features: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="group p-8 rounded-2xl bg-[#0b0b0b] border border-white/5 hover:border-red-600/30 transition-all duration-300 relative overflow-hidden"
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group p-8 rounded-2xl bg-[#0b0b0b] border border-white/5 hover:border-brand-primary/30 transition-all duration-500 relative overflow-hidden"
             >
+              {/* Hover Glow */}
+              <div className="absolute -inset-1 bg-insta-gradient rounded-2xl blur opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+              
               {/* Hover Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-red-600/10 flex items-center justify-center mb-6 group-hover:bg-red-600/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-red-500" />
+                <div className="w-14 h-14 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 group-hover:scale-110 transition-all duration-500">
+                  <feature.icon className="w-7 h-7 text-brand-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">{feature.title}</h3>
+                <p className="text-gray-400 leading-relaxed text-lg">
                   {feature.description}
                 </p>
               </div>

@@ -5,24 +5,24 @@ import { Section } from './ui/Section';
 
 const faqs = [
   {
-    question: "How does the 2-week risk-free trial work?",
-    answer: "We are confident in our talent. If you are not satisfied with the performance of your squad within the first 14 days, you don't pay a single cent. We will either replace the team members or part ways, no hard feelings."
+    question: "How does the growth guarantee work?",
+    answer: "We focus on key performance indicators (KPIs) like reach, engagement, and conversion. If we don't hit the agreed-upon growth milestones within the first 30 days, we'll work for free until we do."
   },
   {
-    question: "Do I own the intellectual property?",
-    answer: "Absolutely. You own 100% of the code, design, and assets created from day one. We sign a strict NDA and IP assignment agreement before the project starts."
+    question: "Do I own the content produced?",
+    answer: "Absolutely. You own 100% of the raw footage, edited videos, designs, and assets created by your squad. We act as your production and growth engine, but you own the empire."
   },
   {
-    question: "What is the time zone overlap?",
-    answer: "Our engineers are primarily based in LATAM and Eastern Europe, ensuring a minimum of 4-6 hours of overlap with US and European time zones. We align our working hours to match your team's standups."
+    question: "What platforms do you support?",
+    answer: "We are experts in YouTube, Instagram, TikTok, X (Twitter), LinkedIn, and creator-led platforms like Skool and Substack. We help you dominate wherever your audience lives."
   },
   {
-    question: "Can I scale the team up or down?",
-    answer: "Yes. Flexibility is core to our model. You can add developers within 48 hours or reduce the squad size with a 2-week notice period to adjust to your product roadmap."
+    question: "Can I switch squad members?",
+    answer: "Yes. If you feel the creative chemistry isn't right, you can request a member swap within 48 hours. We ensure your squad perfectly matches your brand's voice and vision."
   },
   {
-    question: "What tech stacks do you cover?",
-    answer: "We specialize in modern web and mobile stacks: React, Next.js, Node.js, Python (Django/FastAPI), React Native, Flutter, and cloud infrastructure (AWS/GCP/Azure)."
+    question: "What tools do you use?",
+    answer: "We leverage industry-standard tools like Adobe Creative Cloud, DaVinci Resolve, and Figma, combined with our proprietary AI growth stack to give you the ultimate edge."
   }
 ];
 
@@ -34,10 +34,10 @@ export const FAQ: React.FC = () => {
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Frequently Asked <span className="text-red-500">Questions</span>
+            Frequently Asked <span className="text-transparent bg-clip-text bg-insta-gradient">Questions</span>
           </h2>
           <p className="text-gray-400 text-lg">
-            Everything you need to know about working with DevSquad.
+            Everything you need to know about scaling with CreatorHero.
           </p>
         </div>
 
@@ -49,14 +49,14 @@ export const FAQ: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="border border-white/5 rounded-2xl bg-[#0b0b0b] overflow-hidden hover:border-red-600/30 transition-colors"
+              className="border border-white/5 rounded-2xl bg-[#0b0b0b] overflow-hidden hover:border-brand-primary/30 transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 className="w-full p-6 text-left flex items-center justify-between"
               >
-                <span className="text-lg font-medium text-white">{faq.question}</span>
-                <span className={`p-2 rounded-full transition-colors ${openIndex === idx ? 'bg-red-600 text-white' : 'bg-white/5 text-gray-400'}`}>
+                <span className="text-lg font-bold text-white">{faq.question}</span>
+                <span className={`p-2 rounded-full transition-colors ${openIndex === idx ? 'bg-insta-gradient text-white' : 'bg-white/5 text-gray-400'}`}>
                   {openIndex === idx ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                 </span>
               </button>
@@ -68,7 +68,7 @@ export const FAQ: React.FC = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-6 pb-6 text-gray-400 leading-relaxed">
+                    <div className="px-6 pb-6 text-gray-400 leading-relaxed font-medium">
                       {faq.answer}
                     </div>
                   </motion.div>

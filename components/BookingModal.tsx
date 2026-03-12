@@ -114,13 +114,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
           <div>
             <h2 className="text-xl font-bold text-white">Build Your Squad</h2>
             <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <span className={step >= 1 ? "text-red-500 font-medium" : ""}>01. Info</span>
+              <span className={step >= 1 ? "text-sky-500 font-medium" : ""}>01. Info</span>
               <ChevronRight className="w-3 h-3" />
-              <span className={step >= 2 ? "text-red-500 font-medium" : ""}>02. Vision</span>
+              <span className={step >= 2 ? "text-sky-500 font-medium" : ""}>02. Vision</span>
               <ChevronRight className="w-3 h-3" />
-              <span className={step >= 3 ? "text-red-500 font-medium" : ""}>03. Squad</span>
+              <span className={step >= 3 ? "text-sky-500 font-medium" : ""}>03. Squad</span>
               <ChevronRight className="w-3 h-3" />
-              <span className={step >= 4 ? "text-red-500 font-medium" : ""}>04. Join</span>
+              <span className={step >= 4 ? "text-sky-500 font-medium" : ""}>04. Join</span>
             </div>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-gray-400 hover:text-white transition-colors">
@@ -145,7 +145,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                     <input 
                       type="text" 
                       placeholder="John Doe"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
                     />
@@ -155,7 +155,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                     <input 
                       type="email" 
                       placeholder="john@company.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
                       value={formData.email}
                       onChange={e => setFormData({...formData, email: e.target.value})}
                     />
@@ -165,7 +165,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                     <input 
                       type="text" 
                       placeholder="Acme Inc."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
                       value={formData.company}
                       onChange={e => setFormData({...formData, company: e.target.value})}
                     />
@@ -173,7 +173,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                   <div className="space-y-2">
                     <label className="text-sm text-gray-400">Monthly Budget</label>
                     <select 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors appearance-none"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors appearance-none"
                       value={formData.budget}
                       onChange={e => setFormData({...formData, budget: e.target.value})}
                     >
@@ -201,7 +201,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                   <textarea 
                     placeholder="Describe your product vision, target audience, and key features..."
                     rows={6}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors resize-none"
                     value={formData.description}
                     onChange={e => setFormData({...formData, description: e.target.value})}
                   />
@@ -210,20 +210,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                 <div>
                   <label className="text-sm text-gray-400 mb-3 block">Attach Context (Optional)</label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-red-500/50 hover:bg-white/5 transition-all group">
-                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform">
+                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
+                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
                           <Mic className="w-5 h-5" />
                        </div>
                        <span className="text-sm font-medium text-gray-400 group-hover:text-white">Record Audio</span>
                     </button>
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-red-500/50 hover:bg-white/5 transition-all group">
+                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
                           <Video className="w-5 h-5" />
                        </div>
                        <span className="text-sm font-medium text-gray-400 group-hover:text-white">Record Video</span>
                     </button>
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-red-500/50 hover:bg-white/5 transition-all group">
-                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
+                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-emerald-800 group-hover:scale-110 transition-transform">
                           <Upload className="w-5 h-5" />
                        </div>
                        <span className="text-sm font-medium text-gray-400 group-hover:text-white">Upload Files</span>
@@ -250,7 +250,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                         onClick={() => setSelectedCategory(cat)}
                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                           selectedCategory === cat 
-                            ? 'bg-red-600 border-red-600 text-white shadow-[0_0_15px_rgba(220,38,38,0.4)]' 
+                            ? 'bg-sky-600 border-sky-600 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)]' 
                             : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white'
                         }`}
                       >
@@ -268,13 +268,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                           onClick={() => setSelectedSquad(squad.id)}
                           className={`p-5 rounded-2xl border cursor-pointer transition-all relative overflow-hidden group ${
                             selectedSquad === squad.id 
-                            ? 'bg-[#150505] border-red-500 shadow-[0_0_20px_rgba(220,38,38,0.2)]' 
+                            ? 'bg-[#051515] border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.2)]' 
                             : 'bg-white/5 border-white/10 hover:border-white/20'
                           }`}
                         >
                            {/* Selection Check */}
                            {selectedSquad === squad.id && (
-                             <div className="absolute top-4 right-4 text-red-500">
+                             <div className="absolute top-4 right-4 text-sky-500">
                                <Check className="w-5 h-5" />
                              </div>
                            )}
@@ -326,8 +326,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                   className="space-y-8"
                 >
                     <div className="text-center mb-6">
-                        <div className="w-16 h-16 bg-red-600/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/20">
-                            <Lock className="w-8 h-8 text-red-500" />
+                        <div className="w-16 h-16 bg-sky-600/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-sky-500/20">
+                            <Lock className="w-8 h-8 text-sky-500" />
                         </div>
                         <h3 className="text-2xl font-bold text-white">Secure Your Squad</h3>
                         <p className="text-gray-400 text-sm mt-2">Create an account to track your deployment status.</p>
@@ -361,7 +361,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                             <input 
                               type="password" 
                               placeholder="••••••••"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
                               value={formData.password}
                               onChange={e => setFormData({...formData, password: e.target.value})}
                             />
@@ -372,7 +372,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
                             <input 
                               type="password" 
                               placeholder="••••••••"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 transition-colors"
+                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
                               value={formData.confirmPassword}
                               onChange={e => setFormData({...formData, confirmPassword: e.target.value})}
                             />

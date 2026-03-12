@@ -70,9 +70,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <span className="text-2xl font-black tracking-tighter text-white group-hover:text-gray-200 transition-colors">Dev</span>
-          <span className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600 group-hover:from-red-500 group-hover:to-orange-500 transition-all">Squad</span>
-          <div className="w-1.5 h-1.5 rounded-full bg-red-600 mb-1 ml-0.5 animate-pulse" />
+          <span className="text-2xl font-black tracking-tighter text-white group-hover:text-gray-200 transition-colors">Creator</span>
+          <span className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-insta-gradient group-hover:opacity-80 transition-all">Hero</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-brand-primary mb-1 ml-0.5 animate-pulse" />
         </div>
 
         {/* Desktop Nav */}
@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
               onClick={() => handleLinkClick(link.id)}
               className={`text-sm font-medium transition-colors ${
                 (currentView === 'blog' && (link.id === 'blog' || link.name === 'Tutorials')) 
-                ? 'text-red-500' 
+                ? 'text-sky-500' 
                 : 'text-gray-300 hover:text-white'
               }`}
             >
@@ -93,16 +93,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
           
           <div className="h-6 w-px bg-white/10 mx-2"></div>
 
-          <button className="text-sm font-medium text-white hover:text-red-500 transition-colors flex items-center gap-2">
+          <button className="text-sm font-medium text-white hover:text-brand-primary transition-colors flex items-center gap-2">
             <LogIn className="w-4 h-4" /> Login
           </button>
 
           <Button 
             variant="primary" 
-            className="!px-4 !py-2 text-sm"
+            className="!px-6 !py-2 text-sm"
             onClick={onOpenBooking}
           >
-            Book a Squad <ChevronRight className="w-4 h-4" />
+            Get Started <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
 
@@ -131,7 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
                   onClick={() => handleLinkClick(link.id)}
                   className={`text-left font-medium py-2 ${
                     (currentView === 'blog' && link.id === 'blog') 
-                    ? 'text-red-500' 
+                    ? 'text-sky-500' 
                     : 'text-gray-300 hover:text-white'
                   }`}
                 >
@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
               
               <hr className="border-white/5 my-2" />
               
-              <button className="text-left text-white hover:text-red-500 font-medium py-2 flex items-center gap-2">
+              <button className="text-left text-white hover:text-brand-primary font-medium py-2 flex items-center gap-2">
                  <LogIn className="w-4 h-4" /> Login
               </button>
 
@@ -153,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView, onOpenB
                   onOpenBooking();
                 }}
               >
-                Book a Squad
+                Get Started
               </Button>
             </div>
           </motion.div>

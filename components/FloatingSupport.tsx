@@ -36,7 +36,7 @@ export const FloatingSupport: React.FC<FloatingSupportProps> = ({ onOpenBooking 
           >
             {/* Header */}
             <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/5">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center shadow-lg shadow-red-900/20">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-600 to-emerald-900 flex items-center justify-center shadow-lg shadow-sky-900/20">
                  <MessageSquare className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -68,11 +68,11 @@ export const FloatingSupport: React.FC<FloatingSupportProps> = ({ onOpenBooking 
                 onClick={() => window.location.href = 'mailto:hello@devsquad.io'}
                 className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-all duration-200 text-left group border border-transparent hover:border-white/5"
               >
-                <div className="p-2.5 bg-red-500/10 text-red-500 rounded-lg group-hover:bg-red-500 group-hover:text-white transition-colors duration-300">
+                <div className="p-2.5 bg-sky-500/10 text-sky-500 rounded-lg group-hover:bg-sky-500 group-hover:text-white transition-colors duration-300">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-white group-hover:text-red-400 transition-colors">Email Us</div>
+                  <div className="text-sm font-semibold text-white group-hover:text-sky-400 transition-colors">Email Us</div>
                   <div className="text-xs text-gray-500 group-hover:text-gray-400">Response in 24h</div>
                 </div>
               </button>
@@ -81,11 +81,11 @@ export const FloatingSupport: React.FC<FloatingSupportProps> = ({ onOpenBooking 
                 onClick={handleBooking}
                 className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-all duration-200 text-left group border border-transparent hover:border-white/5"
               >
-                <div className="p-2.5 bg-orange-500/10 text-orange-500 rounded-lg group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
+                <div className="p-2.5 bg-emerald-900/10 text-emerald-800 rounded-lg group-hover:bg-emerald-800 group-hover:text-white transition-colors duration-300">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-white group-hover:text-orange-400 transition-colors">Book a Squad</div>
+                  <div className="text-sm font-semibold text-white group-hover:text-emerald-700 transition-colors">Book a Squad</div>
                   <div className="text-xs text-gray-500 group-hover:text-gray-400">Start your build</div>
                 </div>
               </button>
@@ -100,7 +100,7 @@ export const FloatingSupport: React.FC<FloatingSupportProps> = ({ onOpenBooking 
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-red-600 to-orange-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(220,38,38,0.4)] hover:shadow-[0_0_50px_rgba(220,38,38,0.6)] border border-white/20 transition-shadow z-50 cursor-pointer"
+        className="relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-sky-600 to-emerald-900 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(14,165,233,0.4)] hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] border border-white/20 transition-shadow z-50 cursor-pointer"
       >
         <AnimatePresence mode='wait'>
             {isOpen ? (
