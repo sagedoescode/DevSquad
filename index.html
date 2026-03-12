@@ -3,38 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CreatorHero | Supercharge Your Growth</title>
+    <title>Lure | AI-Powered Tools for Elite Freelancers</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               brand: {
-                dark: '#000000',
-                card: '#0b0b0b',
-                primary: '#cc2366', // Instagram pink
-                secondary: '#f09433', // Instagram orange
-                accent: '#bc1888', // Instagram purple
+                dark: '#030814',
+                card: '#0B1537',
+                border: '#243969',
+                purple: '#6037ff',
+                blue: '#0057ff',
+                cyan: '#00F0FF',
+                teal: '#01FFC2',
               }
             },
             fontFamily: {
-              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              sans: ['Satoshi', 'Inter', 'sans-serif'],
             },
             backgroundImage: {
               'glow-radial': 'radial-gradient(circle at center, var(--tw-gradient-stops))',
-              'insta-gradient': 'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
             },
             animation: {
-              scroll: 'scroll 30s linear infinite',
+              scroll: 'scroll 40s linear infinite',
+              'scroll-reverse': 'scroll-reverse 35s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
             },
             keyframes: {
               scroll: {
                 '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              'scroll-reverse': {
+                '0%': { transform: 'translateX(-50%)' },
+                '100%': { transform: 'translateX(0)' },
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              'glow-pulse': {
+                '0%, 100%': { opacity: '0.4' },
+                '50%': { opacity: '0.8' },
               }
             }
           }
@@ -42,23 +58,51 @@
       }
     </script>
     <style>
-      body {
-        background-color: #000000;
-        color: white;
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('https://cdn.fontshare.com/wf/ZALDQALXQBOUTOSGXFMXJGB2HZLDJFBV/JQYTBABDKY3VK3GYEMDLWNAWJIP5IQST/LXWLUWBX42OBR4W7663PHRUT5NK7YFVE.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
       }
-      /* Custom scrollbar for that premium feel */
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('https://cdn.fontshare.com/wf/ZALDQALXQBOUTOSGXFMXJGB2HZLDJFBV/MYH2K44DCVBXFDFXPVKF2SOEYNIP7AFS/LXWLUWBX42OBR4W7663PHRUT5NK7YFVE.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('https://cdn.fontshare.com/wf/ZALDQALXQBOUTOSGXFMXJGB2HZLDJFBV/V5GODUWNQXHYUHTIQJ5EUMFHB4MZYWLN/LXWLUWBX42OBR4W7663PHRUT5NK7YFVE.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Satoshi';
+        src: url('https://cdn.fontshare.com/wf/ZALDQALXQBOUTOSGXFMXJGB2HZLDJFBV/3UEOJLWQMFHE74NFBSQ7F3A4X2EZT5PK/LXWLUWBX42OBR4W7663PHRUT5NK7YFVE.woff2') format('woff2');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      body {
+        background-color: #030814;
+        color: white;
+        font-family: 'Satoshi', 'Inter', sans-serif;
+      }
       ::-webkit-scrollbar {
         width: 10px;
       }
       ::-webkit-scrollbar-track {
-        background: #000000; 
+        background: #030814;
       }
       ::-webkit-scrollbar-thumb {
-        background: #1e293b; 
+        background: #1e293b;
         border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #0ea5e9; 
+        background: #6037ff;
       }
     </style>
   <script type="importmap">
@@ -72,10 +116,8 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+  </body>
 </html>

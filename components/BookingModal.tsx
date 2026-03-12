@@ -1,101 +1,48 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronRight, ChevronLeft, Upload, Mic, Video, Check, Users, Cpu, Lock, UserPlus } from 'lucide-react';
+import { X, ChevronRight, ChevronLeft, Check, Sparkles, Briefcase, Bot, Rocket } from 'lucide-react';
 import { Button } from './ui/Button';
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: any) => void;
 }
 
-const categories = ['Web App', 'Mobile App', 'AI/ML', 'E-commerce', 'SaaS Platform'];
-
-const availableSquads = [
-  {
-    id: 1,
-    name: "Alpha Squad",
-    category: "Web App",
-    members: 4,
-    stack: ["React", "Node.js", "AWS"],
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=100&q=80",
-    status: "Available Now"
-  },
-  {
-    id: 2,
-    name: "Beta Mobile",
-    category: "Mobile App",
-    members: 3,
-    stack: ["React Native", "Firebase"],
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=100&q=80",
-    status: "Available in 2 days"
-  },
-  {
-    id: 3,
-    name: "Data Force",
-    category: "AI/ML",
-    members: 5,
-    stack: ["Python", "TensorFlow", "GCP"],
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=100&q=80",
-    status: "Available Now"
-  },
-  {
-    id: 4,
-    name: "Commerce Pro",
-    category: "E-commerce",
-    members: 4,
-    stack: ["Next.js", "Shopify", "Stripe"],
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=100&q=80",
-    status: "Available Now"
-  },
-  {
-    id: 5,
-    name: "SaaS Scale",
-    category: "SaaS Platform",
-    members: 6,
-    stack: ["Go", "React", "Kubernetes"],
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=100&q=80",
-    status: "Available Now"
-  }
+const platforms = [
+  { name: 'Upwork', color: '#14a800' },
+  { name: 'Fiverr', color: '#1dbf73' },
+  { name: 'Freelancer', color: '#0e76bc' },
+  { name: 'LinkedIn', color: '#0077B5' },
+  { name: 'Toptal', color: '#204ECF' },
+  { name: 'Workana', color: '#24B89D' },
 ];
 
-export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onSubmit }) => {
+const goals = [
+  { label: 'Get more clients', icon: Briefcase },
+  { label: 'Automate proposals', icon: Bot },
+  { label: 'Track time & invoicing', icon: Sparkles },
+  { label: 'Scale my income', icon: Rocket },
+];
+
+export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState("Web App");
-  const [selectedSquad, setSelectedSquad] = useState<number | null>(null);
-  
-  // Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    budget: '',
-    description: '',
-    password: '',
-    confirmPassword: ''
-  });
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
 
   if (!isOpen) return null;
 
-  const filteredSquads = availableSquads.filter(s => s.category === selectedCategory);
+  const togglePlatform = (name: string) => {
+    setSelectedPlatforms(prev => prev.includes(name) ? prev.filter(p => p !== name) : [...prev, name]);
+  };
 
-  const nextStep = () => setStep(s => s + 1);
-  const prevStep = () => setStep(s => s - 1);
-
-  const handleSubmit = () => {
-    // In a real app, validate form data here
-    const finalData = {
-        ...formData,
-        squadId: selectedSquad,
-        category: selectedCategory,
-        squadName: availableSquads.find(s => s.id === selectedSquad)?.name
-    };
-    onSubmit(finalData);
+  const toggleGoal = (label: string) => {
+    setSelectedGoals(prev => prev.includes(label) ? prev.filter(g => g !== label) : [...prev, label]);
   };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -107,301 +54,135 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, onS
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative w-full max-w-4xl bg-[#0b0b0b] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-xl bg-[#0B1537] border border-[#243969]/40 rounded-[35px] shadow-[0_0_60px_rgba(0,0,0,0.5),inset_0_0_43px_0_rgba(20,36,73,0.5)] overflow-hidden flex flex-col max-h-[90vh]"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-[#0b0b0b]">
+        <div className="flex items-center justify-between p-6 border-b border-[#243969]/20">
           <div>
-            <h2 className="text-xl font-bold text-white">Build Your Squad</h2>
-            <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <span className={step >= 1 ? "text-sky-500 font-medium" : ""}>01. Info</span>
+            <h2 className="text-xl font-bold text-white">Get Started Free</h2>
+            <div className="flex items-center gap-2 text-sm text-[#6e89ff]/40 mt-1">
+              <span className={step >= 1 ? "text-[#6037ff] font-medium" : ""}>01. You</span>
               <ChevronRight className="w-3 h-3" />
-              <span className={step >= 2 ? "text-sky-500 font-medium" : ""}>02. Vision</span>
+              <span className={step >= 2 ? "text-[#6037ff] font-medium" : ""}>02. Platforms</span>
               <ChevronRight className="w-3 h-3" />
-              <span className={step >= 3 ? "text-sky-500 font-medium" : ""}>03. Squad</span>
-              <ChevronRight className="w-3 h-3" />
-              <span className={step >= 4 ? "text-sky-500 font-medium" : ""}>04. Join</span>
+              <span className={step >= 3 ? "text-[#6037ff] font-medium" : ""}>03. Goals</span>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-gray-400 hover:text-white transition-colors">
+          <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-[#6e89ff]/40 hover:text-white transition-colors">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-6 md:p-8">
           <AnimatePresence mode="wait">
             {step === 1 && (
-              <motion.div
-                key="step1"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-6"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Full Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="John Doe"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
-                      value={formData.name}
-                      onChange={e => setFormData({...formData, name: e.target.value})}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Work Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="john@company.com"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
-                      value={formData.email}
-                      onChange={e => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Company Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="Acme Inc."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
-                      value={formData.company}
-                      onChange={e => setFormData({...formData, company: e.target.value})}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Monthly Budget</label>
-                    <select 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors appearance-none"
-                      value={formData.budget}
-                      onChange={e => setFormData({...formData, budget: e.target.value})}
-                    >
-                      <option value="" className="bg-[#0b0b0b] text-gray-500">Select Range</option>
-                      <option value="5-10k" className="bg-[#0b0b0b]">$5,000 - $10,000</option>
-                      <option value="10-25k" className="bg-[#0b0b0b]">$10,000 - $25,000</option>
-                      <option value="25-50k" className="bg-[#0b0b0b]">$25,000 - $50,000</option>
-                      <option value="50k+" className="bg-[#0b0b0b]">$50,000+</option>
-                    </select>
-                  </div>
+              <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
+                <div className="space-y-2">
+                  <label className="text-sm text-[#6e89ff]/60">Full Name</label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="w-full bg-[#060d24] border border-[#243969]/40 rounded-[15px] px-4 py-3 text-white focus:outline-none focus:border-[#6037ff] transition-colors"
+                    value={formData.name}
+                    onChange={e => setFormData({ ...formData, name: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm text-[#6e89ff]/60">Email</label>
+                  <input
+                    type="email"
+                    placeholder="you@email.com"
+                    className="w-full bg-[#060d24] border border-[#243969]/40 rounded-[15px] px-4 py-3 text-white focus:outline-none focus:border-[#6037ff] transition-colors"
+                    value={formData.email}
+                    onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm text-[#6e89ff]/60">Password</label>
+                  <input
+                    type="password"
+                    placeholder="Create a password"
+                    className="w-full bg-[#060d24] border border-[#243969]/40 rounded-[15px] px-4 py-3 text-white focus:outline-none focus:border-[#6037ff] transition-colors"
+                    value={formData.password}
+                    onChange={e => setFormData({ ...formData, password: e.target.value })}
+                  />
                 </div>
               </motion.div>
             )}
 
             {step === 2 && (
-              <motion.div
-                key="step2"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-8"
-              >
-                <div className="space-y-4">
-                  <label className="text-sm text-gray-400">Tell us about your project</label>
-                  <textarea 
-                    placeholder="Describe your product vision, target audience, and key features..."
-                    rows={6}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors resize-none"
-                    value={formData.description}
-                    onChange={e => setFormData({...formData, description: e.target.value})}
-                  />
-                </div>
-
+              <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                 <div>
-                  <label className="text-sm text-gray-400 mb-3 block">Attach Context (Optional)</label>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
-                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
-                          <Mic className="w-5 h-5" />
-                       </div>
-                       <span className="text-sm font-medium text-gray-400 group-hover:text-white">Record Audio</span>
+                  <h3 className="text-lg font-bold text-white mb-2">Which platforms do you use?</h3>
+                  <p className="text-sm text-[#6e89ff]/40 mb-4">Select all that apply. You can add more later.</p>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {platforms.map(p => (
+                    <button
+                      key={p.name}
+                      onClick={() => togglePlatform(p.name)}
+                      className={`flex items-center gap-3 p-4 rounded-[20px] border transition-all ${
+                        selectedPlatforms.includes(p.name)
+                          ? 'bg-[#6037ff]/10 border-[#6037ff]/40 shadow-[0_0_15px_rgba(96,55,255,0.2)]'
+                          : 'bg-[#060d24]/60 border-[#243969]/30 hover:border-[#243969]/60'
+                      }`}
+                    >
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm" style={{ background: p.color }}>
+                        {p.name.charAt(0)}
+                      </div>
+                      <span className="text-sm font-medium text-white">{p.name}</span>
+                      {selectedPlatforms.includes(p.name) && <Check className="w-4 h-4 text-[#6037ff] ml-auto" />}
                     </button>
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
-                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
-                          <Video className="w-5 h-5" />
-                       </div>
-                       <span className="text-sm font-medium text-gray-400 group-hover:text-white">Record Video</span>
-                    </button>
-                    <button className="flex items-center justify-center gap-3 p-4 rounded-xl border border-dashed border-white/20 hover:border-sky-500/50 hover:bg-white/5 transition-all group">
-                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-emerald-800 group-hover:scale-110 transition-transform">
-                          <Upload className="w-5 h-5" />
-                       </div>
-                       <span className="text-sm font-medium text-gray-400 group-hover:text-white">Upload Files</span>
-                    </button>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-2 text-center">We accept wireframes, looms, or voice notes.</p>
+                  ))}
                 </div>
               </motion.div>
             )}
 
             {step === 3 && (
-              <motion.div
-                key="step3"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-6"
-              >
-                 {/* Categories */}
-                 <div className="flex flex-wrap gap-2">
-                    {categories.map(cat => (
-                      <button
-                        key={cat}
-                        onClick={() => setSelectedCategory(cat)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
-                          selectedCategory === cat 
-                            ? 'bg-sky-600 border-sky-600 text-white shadow-[0_0_15px_rgba(14,165,233,0.4)]' 
-                            : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20 hover:text-white'
-                        }`}
-                      >
-                        {cat}
-                      </button>
-                    ))}
-                 </div>
-
-                 {/* Squads List */}
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[400px] overflow-y-auto custom-scrollbar pr-2">
-                    {filteredSquads.length > 0 ? (
-                      filteredSquads.map(squad => (
-                        <div 
-                          key={squad.id}
-                          onClick={() => setSelectedSquad(squad.id)}
-                          className={`p-5 rounded-2xl border cursor-pointer transition-all relative overflow-hidden group ${
-                            selectedSquad === squad.id 
-                            ? 'bg-[#051515] border-sky-500 shadow-[0_0_20px_rgba(14,165,233,0.2)]' 
-                            : 'bg-white/5 border-white/10 hover:border-white/20'
-                          }`}
-                        >
-                           {/* Selection Check */}
-                           {selectedSquad === squad.id && (
-                             <div className="absolute top-4 right-4 text-sky-500">
-                               <Check className="w-5 h-5" />
-                             </div>
-                           )}
-
-                           <div className="flex items-center gap-4 mb-4">
-                             <img src={squad.image} alt={squad.name} className="w-12 h-12 rounded-lg object-cover bg-gray-800" />
-                             <div>
-                               <h3 className="font-bold text-white">{squad.name}</h3>
-                               <p className="text-xs text-green-400 flex items-center gap-1">
-                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                                 {squad.status}
-                               </p>
-                             </div>
-                           </div>
-
-                           <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                              <div className="flex items-center gap-1">
-                                <Users className="w-4 h-4" /> {squad.members} Members
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Cpu className="w-4 h-4" /> Senior Level
-                              </div>
-                           </div>
-
-                           <div className="flex flex-wrap gap-2">
-                              {squad.stack.map(tech => (
-                                <span key={tech} className="px-2 py-1 bg-white/5 text-xs text-gray-300 rounded border border-white/5">
-                                  {tech}
-                                </span>
-                              ))}
-                           </div>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="col-span-full py-10 text-center text-gray-500 border border-dashed border-white/10 rounded-2xl">
-                         No pre-assembled squads for this category. We can build one custom!
+              <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">What's your main goal?</h3>
+                  <p className="text-sm text-[#6e89ff]/40 mb-4">We'll customize your dashboard based on this.</p>
+                </div>
+                <div className="space-y-3">
+                  {goals.map(g => (
+                    <button
+                      key={g.label}
+                      onClick={() => toggleGoal(g.label)}
+                      className={`w-full flex items-center gap-4 p-5 rounded-[20px] border transition-all text-left ${
+                        selectedGoals.includes(g.label)
+                          ? 'bg-[#6037ff]/10 border-[#6037ff]/40 shadow-[0_0_15px_rgba(96,55,255,0.2)]'
+                          : 'bg-[#060d24]/60 border-[#243969]/30 hover:border-[#243969]/60'
+                      }`}
+                    >
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[#6e89ff]" style={{ background: 'radial-gradient(circle farthest-corner at 54% 40%, rgba(96,55,255,0.15), rgba(0,87,255,0.08))' }}>
+                        <g.icon className="w-5 h-5" />
                       </div>
-                    )}
-                 </div>
+                      <span className="text-white font-medium">{g.label}</span>
+                      {selectedGoals.includes(g.label) && <Check className="w-5 h-5 text-[#6037ff] ml-auto" />}
+                    </button>
+                  ))}
+                </div>
               </motion.div>
-            )}
-
-            {step === 4 && (
-                <motion.div
-                  key="step4"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className="space-y-8"
-                >
-                    <div className="text-center mb-6">
-                        <div className="w-16 h-16 bg-sky-600/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-sky-500/20">
-                            <Lock className="w-8 h-8 text-sky-500" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-white">Secure Your Squad</h3>
-                        <p className="text-gray-400 text-sm mt-2">Create an account to track your deployment status.</p>
-                    </div>
-
-                    <div className="space-y-4 max-w-sm mx-auto">
-                        <div className="bg-white/5 border border-white/10 rounded-xl p-4 flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400">
-                                <Users className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <div className="text-sm text-gray-500">Selected Squad</div>
-                                <div className="font-bold text-white">
-                                    {selectedSquad ? availableSquads.find(s => s.id === selectedSquad)?.name : 'Custom Squad'}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400">Email Address</label>
-                            <input 
-                              type="email" 
-                              value={formData.email}
-                              disabled
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400">Choose Password</label>
-                            <input 
-                              type="password" 
-                              placeholder="••••••••"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
-                              value={formData.password}
-                              onChange={e => setFormData({...formData, password: e.target.value})}
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-sm text-gray-400">Confirm Password</label>
-                            <input 
-                              type="password" 
-                              placeholder="••••••••"
-                              className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 transition-colors"
-                              value={formData.confirmPassword}
-                              onChange={e => setFormData({...formData, confirmPassword: e.target.value})}
-                            />
-                        </div>
-                    </div>
-                </motion.div>
             )}
           </AnimatePresence>
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-white/5 bg-[#0b0b0b] flex justify-between">
-          <Button 
-            variant="ghost" 
-            onClick={step === 1 ? onClose : prevStep}
-          >
-             {step === 1 ? 'Cancel' : 'Back'}
+        <div className="p-6 border-t border-[#243969]/20 flex justify-between">
+          <Button variant="ghost" onClick={step === 1 ? onClose : () => setStep(s => s - 1)}>
+            {step === 1 ? 'Cancel' : <><ChevronLeft className="w-4 h-4" /> Back</>}
           </Button>
-          
-          <Button 
-            variant="primary" 
-            onClick={step === 4 ? handleSubmit : nextStep}
+          <Button
+            variant="primary"
+            onClick={step === 3 ? onClose : () => setStep(s => s + 1)}
             className="px-8"
-            disabled={step === 3 && !selectedSquad}
           >
-            {step === 4 ? (
-                <>Create Account & Deploy <UserPlus className="w-4 h-4" /></>
+            {step === 3 ? (
+              <>Launch Dashboard <Rocket className="w-4 h-4" /></>
             ) : (
-                <>Next Step <ChevronRight className="w-4 h-4" /></>
+              <>Next <ChevronRight className="w-4 h-4" /></>
             )}
           </Button>
         </div>

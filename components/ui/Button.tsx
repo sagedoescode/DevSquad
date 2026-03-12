@@ -2,43 +2,38 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'insta';
+  variant?: 'primary' | 'secondary' | 'ghost';
   children: React.ReactNode;
   className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  variant = 'primary', 
-  children, 
-  className = '', 
-  ...props 
+export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
+  children,
+  className = '',
+  ...props
 }) => {
-  const baseStyles = "relative px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden group tracking-tight";
-  
+  const baseStyles = "relative px-8 py-4 font-semibold transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden group tracking-wide cursor-pointer";
+
   const variants = {
-    // Primary: Instagram-like gradient
-    primary: "bg-insta-gradient text-white shadow-[0_4px_20px_rgba(204,35,102,0.4)] hover:shadow-[0_8px_30px_rgba(204,35,102,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none",
-    
-    // Insta: Explicitly named variant
-    insta: "bg-insta-gradient text-white shadow-[0_4px_20px_rgba(204,35,102,0.4)] hover:shadow-[0_8px_30px_rgba(204,35,102,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none",
-    
-    // Secondary: Glassmorphism with depth
-    secondary: "bg-[#0b0b0b] text-gray-300 border border-white/10 shadow-[0_4px_10px_rgba(0,0,0,0.5)] hover:bg-[#151515] hover:text-white hover:border-white/20 hover:-translate-y-0.5 active:translate-y-0",
-    
-    ghost: "bg-transparent text-gray-400 hover:text-white hover:bg-white/5"
+    primary: "text-white rounded-[35px] shadow-[inset_0_0_25px_0_rgba(20,36,73,0.5)] border border-[#6e89ff]/30 hover:shadow-[inset_0_0_35px_0_rgba(20,36,73,0.7),0_0_30px_rgba(96,55,255,0.3)] hover:-translate-y-0.5 active:translate-y-0",
+    secondary: "text-gray-300 rounded-[35px] bg-[#0B1537]/80 border border-[#243969]/50 shadow-[inset_0_0_10px_0_rgba(20,36,73,0.5)] hover:bg-[#0f1e40] hover:text-white hover:border-[#6e89ff]/30 hover:-translate-y-0.5 active:translate-y-0",
+    ghost: "bg-transparent text-gray-400 hover:text-white hover:bg-white/5 rounded-xl"
   };
 
   return (
     <motion.button
-      whileTap={{ scale: 0.95 }}
+      whileTap={{ scale: 0.98 }}
       className={`${baseStyles} ${variants[variant]} ${className}`}
+      style={variant === 'primary' ? {
+        background: 'radial-gradient(circle farthest-corner at 50% -10%, #6037ff, #0057ff)',
+      } : undefined}
       {...props}
     >
       <span className="relative z-10 flex items-center gap-2">{children}</span>
-      
-      {/* Shine effect for primary/insta */}
-      {(variant === 'primary' || variant === 'insta') && (
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+      {variant === 'primary' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-[#6037ff]/20 via-transparent to-[#00F0FF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-[35px]" />
       )}
     </motion.button>
   );

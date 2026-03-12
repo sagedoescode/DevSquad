@@ -1,51 +1,53 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, Users, Rocket, BarChart3, ArrowDown } from 'lucide-react';
+import { UserPlus, Settings, Zap, TrendingUp, ArrowDown } from 'lucide-react';
 import { Section } from './ui/Section';
 
 const steps = [
   {
     id: '01',
-    title: "Branding & Authority",
-    description: "We define your unique voice and build your authority, turning you from a freelancer into a category leader.",
-    icon: Search
+    title: "Connect Your Platforms",
+    description: "Link your Upwork, Fiverr, Freelancer, LinkedIn, Toptal, and Workana accounts in one click. Import your existing profile and history.",
+    icon: UserPlus
   },
   {
     id: '02',
-    title: "AI Lead Generation",
-    description: "We set up your automated client acquisition engine and AI-powered proposal system to land high-ticket deals.",
-    icon: Users
+    title: "Train Your AI",
+    description: "Upload past proposals, messages, and contracts. The AI learns your voice, pricing, and style to represent you authentically.",
+    icon: Settings
   },
   {
     id: '03',
-    title: "Squad Integration",
-    description: "We deploy your dedicated growth squad—editors, managers, and designers—to handle the heavy lifting.",
-    icon: Rocket
+    title: "Automate Everything",
+    description: "Set preferences for job types, rates, and clients. AI applies to jobs, sends proposals, tracks hours, and invoices — all hands-free.",
+    icon: Zap
   },
   {
     id: '04',
-    title: "Empire Scaling",
-    description: "You focus on building your craft. We handle the branding, the clients, and the growth. Scale without the stress.",
-    icon: BarChart3
+    title: "Scale Your Income",
+    description: "Watch your client base grow while AI handles admin. Focus on delivering great work while Lure handles the rest.",
+    icon: TrendingUp
   }
 ];
 
 export const HowItWorks: React.FC = () => {
   return (
-    <Section className="bg-[#000000] relative" id="how-it-works">
+    <Section className="bg-[#030814] relative" id="how-it-works">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            From Vision to Empire in <span className="text-transparent bg-clip-text bg-insta-gradient">4 Steps</span>
-          </h2>
-          <p className="text-gray-400 text-lg font-medium">
-            We've stripped away the agency bloat. No account managers, no hidden fees. Just direct access to high-performance growth.
-          </p>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              From Zero to Autopilot in{' '}
+              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 50% -10%, #6037ff, #0057ff)' }}>4 Steps</span>
+            </h2>
+            <p className="text-[#8a9cc7] text-lg">
+              Setup takes 10 minutes. Then your AI assistant works 24/7 while you sleep.
+            </p>
+          </motion.div>
         </div>
 
         <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-insta-gradient opacity-20 -translate-y-1/2 z-0" />
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 -translate-y-1/2 z-0" style={{ background: 'linear-gradient(to right, transparent, rgba(96,55,255,0.3), transparent)' }} />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             {steps.map((step, idx) => (
@@ -57,24 +59,19 @@ export const HowItWorks: React.FC = () => {
                 transition={{ delay: idx * 0.2 }}
                 className="relative group"
               >
-                <div className="bg-[#0b0b0b] border border-white/5 p-8 rounded-2xl h-full hover:border-brand-primary/30 transition-all duration-300 hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-6 text-brand-primary font-bold text-xl border border-brand-primary/20 group-hover:bg-insta-gradient group-hover:text-white transition-colors duration-300">
+                <div className="bg-[#0B1537]/50 border border-[#243969]/25 p-8 rounded-[25px] h-full hover:border-[#6037ff]/40 transition-all duration-300 hover:-translate-y-2 shadow-[inset_0_0_25px_0_rgba(20,36,73,0.3)]">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 text-white font-bold text-xl border border-[#6037ff]/30 group-hover:shadow-[0_0_20px_rgba(96,55,255,0.3)] transition-all duration-300" style={{ background: 'radial-gradient(circle farthest-corner at 54% 40%, rgba(96,55,255,0.3), rgba(0,87,255,0.15))' }}>
                     <step.icon className="w-6 h-6" />
                   </div>
-                  
-                  <div className="absolute top-8 right-8 text-4xl font-black text-white/5 select-none">
-                    {step.id}
-                  </div>
+
+                  <div className="absolute top-8 right-8 text-4xl font-black text-white/5 select-none">{step.id}</div>
 
                   <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed font-medium">
-                    {step.description}
-                  </p>
+                  <p className="text-[#6e89ff]/60 text-sm leading-relaxed">{step.description}</p>
                 </div>
-                
-                {/* Mobile Arrow */}
+
                 {idx < steps.length - 1 && (
-                  <div className="md:hidden flex justify-center py-4 text-brand-primary/50">
+                  <div className="md:hidden flex justify-center py-4 text-[#6037ff]/30">
                     <ArrowDown />
                   </div>
                 )}
