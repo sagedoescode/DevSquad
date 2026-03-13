@@ -1,0 +1,223 @@
+/* === CreatorHero Exact Keyframes === */
+@keyframes ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-65%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bounce-in {
+  0% { opacity: 0; transform: scale(0.1); }
+  80% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glassLightSweep {
+  0% { background-position: 100% 100%; }
+  100% { background-position: -100% -100%; }
+}
+
+/* === CreatorHero Button Styles (exact) === */
+.button {
+  cursor: pointer;
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: white;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  color: white;
+  text-decoration: none;
+}
+
+.button:active {
+  transform: scale(1);
+}
+
+.button-primary {
+  background-image: radial-gradient(circle, #6037ff, #0057ff);
+}
+
+.button-primary:hover {
+  transform: scale(1.05);
+}
+
+.button-secondary {
+  background-color: transparent;
+  border: 1px solid #1c2d58;
+  box-shadow: 0px -2px 0px 1px #1c2d58 inset, 0px 0px 10px 0px #142449 inset;
+}
+
+.button-secondary:hover {
+  outline: 1px solid #45465c;
+}
+
+/* === Hero Container (exact CreatorHero) === */
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 45px;
+  border: 0;
+  min-height: 90vh;
+}
+
+@media (min-width: 640px) {
+  .hero-wrapper {
+    min-height: 98vh;
+    margin-inline: 15px;
+  }
+}
+
+.herotop {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 5;
+  background-image: linear-gradient(#030814, #0308148a 75%, #03081400);
+  height: 200px;
+  display: block;
+}
+
+.hero-border {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-image: radial-gradient(circle farthest-corner at 50% -10%, #6037ff33, #0057ff11, transparent 70%);
+}
+
+.hero-box {
+  background-color: #030814;
+  border-radius: 44px;
+  margin: 1px;
+  position: absolute;
+  inset: 0;
+  animation: fade-in 1s linear forwards;
+}
+
+.hero-circles {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce-in 1s ease forwards;
+  overflow: hidden;
+}
+
+/* Ring animation circle containers */
+.hero-circles .ring-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hero section cards */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #0f1e40;
+  box-shadow: inset 0 0 25px 0 rgba(20, 36, 73, 0.5);
+  border-radius: 25px;
+}
+
+.hero-card::after {
+  content: '';
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: linear-gradient(0deg, #18399c, hsla(227.5, 70.59%, 6.67%, 0));
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Divider lines */
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(15, 30, 64, 0), #0f1e40 50%, rgba(15, 30, 64, 0));
+  margin-top: 10px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 1) 68%, hsla(219.53, 96.18%, 79.14%, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section gradient overlay (bottom of cards) */
+.section-glow {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: linear-gradient(0deg, #18399c, hsla(227.5, 70.59%, 6.67%, 0));
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #030814;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6037ff;
+}
+
+/* Animate scroll for ticker */
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(96, 55, 255, 0.3);
+  color: white;
+}
+
+/* Utility: gradient border top separator */
+.gradient-separator {
+  background: linear-gradient(90deg, #0a133000, #0a133052 20%, #0a1330 50%, #0a13304d 80%, #0a133000);
+  height: 1px;
+}
